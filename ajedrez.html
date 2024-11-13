@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablero de Ajedrez</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .chessboard {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            grid-template-rows: repeat(8, 50px);
+            border: 2px solid #333;
+        }
+        .chessboard div {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+        .chessboard .black {
+            background-color: #000;
+            color: #fff;
+        }
+        .chessboard .white {
+            background-color: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="chessboard">
+        <!-- Generar las casillas del tablero -->
+        <script>
+            const chessboard = document.querySelector('.chessboard');
+            const pieces = [
+                '♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜',
+                '♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟',
+                '', '', '', '', '', '', '', '',
+                '', '', '', '', '', '', '', '',
+                '', '', '', '', '', '', '', '',
+                '', '', '', '', '', '', '', '',
+                '♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙',
+                '♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖'
+            ];
+            for (let i = 0; i < 64; i++) {
+                const square = document.createElement('div');
+                if (Math.floor(i / 8) % 2 === 0) {
+                    square.className = (i % 2 === 0) ? 'white' : 'black';
+                } else {
+                    square.className = (i % 2 === 0) ? 'black' : 'white';
+                }
+                square.textContent = pieces[i];
+                chessboard.appendChild(square);
+            }
+        </script>
+    </div>
+</body>
+</html>
